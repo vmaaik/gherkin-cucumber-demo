@@ -1,36 +1,32 @@
 package steps;
 
 
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.util.concurrent.TimeUnit;
+import pages.BasePage;
+import pages.LoginPage;
 
 public class Login {
 
 
     @Before
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-        driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
+        BasePage.setupProperties();
     }
 
     @Given("^User navigates to stackoverflow website$")
     public void user_navigates_to_stackoverflow_website() throws Exception {
-        System.out.println("test");
+        BasePage.start();
     }
 
     @And("^Click on the login buton on the homepage$")
     public void click_on_the_login_buton_on_the_homepage() throws Exception {
-        System.out.println("test");
+        LoginPage.navigateToLoginPage();
+
     }
 
     @And("^User enters a valid username$")
@@ -53,4 +49,8 @@ public class Login {
         System.out.println("test");
     }
 
+    @After
+    public void stop() {
+
+    }
 }
