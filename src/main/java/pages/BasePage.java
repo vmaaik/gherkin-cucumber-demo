@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 public class BasePage {
 
     static WebDriver driver;
+    private static final String page = "https://github.com/";
 
     public static void setupProperties() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
@@ -18,6 +19,11 @@ public class BasePage {
     }
 
     public static void start() {
-        driver.get("https://stackoverflow.com/");
+        driver.get(BasePage.page);
+    }
+
+    public static void tearDown() {
+        driver.manage().deleteAllCookies();
+        driver.quit();
     }
 }
