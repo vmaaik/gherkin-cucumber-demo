@@ -1,5 +1,5 @@
 Feature: Login into account
-  Existing stackoverflow user should be able to log into account using correct credentials
+  Existing github user should be able to log into account using correct credentials
 
   Scenario: Login into account with correct credentials
     Given User navigates to stackoverflow website

@@ -10,7 +10,9 @@ import cucumber.api.java.en.When;
 import pages.BasePage;
 import pages.LoginPage;
 
-public class Login {
+public class LoginSteps {
+
+    private final LoginPage loginPage = new LoginPage();
 
 
     @Before
@@ -23,15 +25,14 @@ public class Login {
         BasePage.start();
     }
 
-    @And("^Click on the login buton on the homepage$")
-    public void click_on_the_login_buton_on_the_homepage() throws Exception {
-        LoginPage.navigateToLoginPage();
-
+    @And("^Click on the login button on the homepage$")
+    public void click_on_the_login_button_on_the_homepage() throws Exception {
+        loginPage.navigateToLoginPage();
     }
 
     @And("^User enters a valid username$")
     public void user_enters_a_valid_username() throws Exception {
-        System.out.println("test");
+
     }
 
     @And("^User enters a valid password$")
@@ -51,6 +52,6 @@ public class Login {
 
     @After
     public void stop() {
-
+        LoginPage.tearDown();
     }
 }
