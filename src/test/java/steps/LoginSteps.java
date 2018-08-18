@@ -1,7 +1,6 @@
 package steps;
 
 import cucumber.api.java.After;
-import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -14,11 +13,6 @@ import static org.junit.Assert.assertEquals;
 public class LoginSteps {
 
     private final LoginPage loginPage = new LoginPage();
-
-    @Before
-    public void setup() {
-        BasePage.setupProperties();
-    }
 
     @Given("^web browser is at the github home page$")
     public void user_navigates_to_stackoverflow_website() {
@@ -48,6 +42,6 @@ public class LoginSteps {
 
     @After
     public void stop() {
-        LoginPage.tearDown();
+        BasePage.tearDown();
     }
 }

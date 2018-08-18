@@ -1,26 +1,31 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.springframework.beans.factory.annotation.Autowired;
 
-public class LoginPage extends BasePage {
+public class LoginPage {
+
+    @Autowired
+    WebDriver webDriver;
 
     public void navigateToLoginPage() {
-        driver.findElement(By.xpath("//a[contains(text(),'Sign in')]")).click();
+        webDriver.findElement(By.xpath("//a[contains(text(),'Sign in')]")).click();
     }
 
     public void setUserName(String userName) {
-        driver.findElement(By.xpath("//input[@id='login_field']")).sendKeys(userName);
+        webDriver.findElement(By.xpath("//input[@id='login_field']")).sendKeys(userName);
     }
 
     public void setPassword(String password) {
-        driver.findElement(By.xpath("//input[@id='password']")).sendKeys(password);
+        webDriver.findElement(By.xpath("//input[@id='password']")).sendKeys(password);
     }
 
     public void clickLogin() {
-        driver.findElement(By.xpath(" //input[@value='Sign in']")).click();
+        webDriver.findElement(By.xpath(" //input[@value='Sign in']")).click();
     }
 
     public String getMessage() {
-        return driver.findElement(By.xpath("//div[@class='container']")).getText();
+        return webDriver.findElement(By.xpath("//div[@class='container']")).getText();
     }
 }
